@@ -8,7 +8,7 @@ R主页
 http://www.r-project.org
 
 CRAN
-http://cran.r-project.org成都
+http://cran.r-project.org
 
 R的博客：
 http://r-bloggers.com
