@@ -39,3 +39,7 @@ vignettes/*.pdf
 *.Rproj
 *.Rproj.*
 
+#
+*.docx
+*.html
+
