@@ -42,3 +42,6 @@ stem(x)
 
 stem(x,scale=1)
 stem(x,scale=2)
+
+
+
