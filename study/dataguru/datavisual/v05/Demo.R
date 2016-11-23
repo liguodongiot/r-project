@@ -270,8 +270,22 @@ map("state",boundary = FALSE,col = "red",add = TRUE)
 install.packages("sp")
 library(sp)
 
-load(url("http://gadm.org/data/rda/GBR_adm1.RData"))
-spplot(gadm,"Shape Area")
+install.packages("mapdata")
+install.packages("maptools")
+library(mapdata)
+library(maptools)
+
+setwd("D:")
+getwd()
+#map<-readShapePoly("CHN_adm1.rds")
+map<-readRDS("CHN_adm1.rds")
+plot(map)
+
+plot(map,col=heat.colors(10))
+
+#load(url("http://gadm.org/data/rda/GBR_adm1.RData"))
+#read.table("CHN_adm1.rds")
+#spplot(gadm,"Shape Area")
 
 #输出为图形文件
 #保存在工作目录
@@ -290,6 +304,110 @@ png("scatterplot.pdf")
 
 
 ##########################
+
+#设置图形要素的颜色
+
+#设置点的颜色
+plot(rnorm(1000),col="red")
+
+
+#颜色的表达
+#列数所有颜色名
+colors()
+
+#使用数值表达颜色
+#col=n
+#n表示当前调色板上的颜色值
+#缺省调色板下，1表示黑色，2表示红色，0表示背景色
+#palette()函数观看当前调色板
+palette()
+
+
+#改变缺省调色板
+palette(c("red","blue","yellow","green","orange"))
+palette()
+
+palette("default")
+palette()
+
+#十六进制表达的颜色
+#红色，绿色，蓝色，alpha(透明度)
+plot(rnorm(1000),col="#AC5500BB")
+
+rgb(0.5,0.5,0.5,0.5)
+
+rgb(0.5,0.5,0.5,0.2)
+
+#自动取颜色
+heat.colors(5)
+heat.colors(10)
+heat.colors(25)
+
+#直观的调色板RColorBrewer
+
+install.packages("RColorBrewer")
+library(RColorBrewer)
+
+display.brewer.all()
+
+brewer.pal(7,"YlOrRd")
+
+display.brewer.pal(7,"YlOrRd")
+
+
+#颜色向量：使用多种颜色画图
+setwd("./data")
+getwd()
+sales <- read.csv("citysales.csv",header = TRUE)
+
+barplot(as.matrix(sales[,2:4]),
+beside = T,
+legend=sales$City,
+col=c("red","blue","green","orange","pink"),
+border="white")
+
+#颜色数和样本数要相等
+sales
+
+#循环颜色（beside = T）
+barplot(as.matrix(sales[,2:4]),
+beside = T,
+legend=sales$City,
+col=c("red","blue","green","pink"),
+border="white")
+
+#利用head.colors()
+barplot(as.matrix(sales[,2:4]),
+beside = T,
+legend=sales$City,
+col=heat.colors(length(sales$City)),
+border="white")
+
+#利用rainbow()  彩虹的颜色
+barplot(as.matrix(sales[,2:4]),
+beside = T,
+legend=sales$City,
+col=rainbow(length(sales$City)),
+border="white")
+
+#利用terrain.colors()
+barplot(as.matrix(sales[,2:4]),
+beside = T,
+legend=sales$City,
+col=terrain.colors(length(sales$City)),
+border="white")
+
+#其他颜色函数
+#cm.colors()
+#topo.colors()
+barplot(as.matrix(sales[,2:4]),
+        beside = T,
+        legend=sales$City,
+        col=topo.colors(length(sales$City)),
+        border="white")
+
+
+###############################
 
 
 
